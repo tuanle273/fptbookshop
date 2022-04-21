@@ -1,0 +1,98 @@
+﻿@model IEnumerable<fptbookshop.Models.Product>
+ <h3 class="display-5">Admin Zone </h3>
+<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+ 
+<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+<p>
+  
+    <a asp-action="Create" class="btn btn-primary">Create New Product</a>  
+    
+</p>
+<div class="search">
+<input type="text" id="search" placeholder="Search something!" align="right">
+</div>
+<div class="container">
+		
+				<div class="form-group"> 	
+			 		<select class  ="selectpicker" name="state" id="maxRows" >
+                         
+						 <option value="5000">Show ALL Rows</option>
+						 <option value="5">5</option>
+						 <option value="10">10</option>
+						 <option value="15">15</option>
+						 <option value="20">20</option>
+						 <option value="50">50</option>
+						 <option value="70">70</option>
+						 <option value="100">100</option>
+						</select>
+			 		
+			  	</div>
+
+   <table id="table-id" class="table table-bordered">
+    <thead>
+        <tr>
+             <th scope="col" width="5%">#</th>
+                    <th scope="col" width="10%">@Html.DisplayNameFor(model => model.Name)</th>
+                    <th scope="col" width="20%">@Html.DisplayNameFor(model => model.Image)</th>
+                    <th scope="col" width="20%">@Html.DisplayNameFor(model => model.Description)</th>
+                    <th scope="col" width="20%">@Html.DisplayNameFor(model => model.Price)</th>
+                    <th scope="col" class="center" width="20%"><span>Action</span></th>
+           
+        </tr>
+        <div class='pagination-container' >
+            
+				<nav>
+				  <ul class="pagination">
+            
+            <li data-page="prev" >
+             <button> < <span class="sr-only">(current)</span></button>
+                 </li>
+				
+               <li data-page="next" id="prev">
+               <buton> > <span class="sr-only">(current)</span></buton>
+								    </li>
+				  </ul>
+				</nav>
+			</div>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src=" @item.Image" width="300" height="200" >
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <span class="text-muted">@(item.Price.ToString("n0")) VND</span>    
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId"><button type="button" class="btn btn-primary">Edit</button></a>
+  
+                                <form asp-action="Delete" asp-route-id="@item.ProductId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                    <input type="hidden" asp-for="@item.ProductId" />
+                                  
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                  </form>
+            </td>
+        </tr>
+
+	}		
+    </tbody>
+</table>
+
+    </div>
+
+    
+</div>
+              
+        
+  
+    
+                
+      

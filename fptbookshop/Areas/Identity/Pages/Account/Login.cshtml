@@ -1,0 +1,82 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+@{
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <form id="account" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+      
+	
+
+	<div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Log In</h4>
+											<div class="form-group">
+                                                <input type="email" class="form-control" asp-for="Input.Email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+												
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" class="form-control" asp-for="Input.Password" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+
+											<button type="submit" class="btn btn-primary">submit</button>
+                            				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+				      					</div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
+ </form>
+        <section>
+            
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                           
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
