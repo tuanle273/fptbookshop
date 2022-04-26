@@ -32,7 +32,6 @@ $(document).ready(function () {
     });
 });
 
-
 getPagination('#table-id');
 //getPagination('.table-class');
 //getPagination('table');
@@ -42,7 +41,8 @@ getPagination('#table-id');
 - append pagination list as per numbers of rows / max rows option (20row/5= 4pages )
 - each pagination li on click -> fade out all tr gt max rows * li num and (5*pagenum 2 = 10 rows)
 - fade out all tr lt max rows * li num - max rows ((5*pagenum 2 = 10) - 5)
-- fade in all tr between (maxRows*PageNum) and (maxRows*pageNum)- MaxRows 
+- fade in all tr between (maxRows
+*PageNum) and (maxRows*pageNum)- MaxRows 
 */
 
 
@@ -183,5 +183,4 @@ $(function () {
     });
 });
 
-//  Developed By Yasser Mas
-// yasser.mas2@gmail.com
+

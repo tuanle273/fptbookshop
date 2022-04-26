@@ -72,14 +72,10 @@ body {
 }
 
 .form-control {
-    border: none;
+    border: 1px solid #ccc;
     padding-left: 32px
 }
 
-    .form-control:focus {
-        border: none;
-        box-shadow: none
-    }
 
 .green {
     color: green
@@ -91,7 +87,11 @@ body {
     text-align: center;
 }
 
-
+.t-cover-img {
+    display: block;
+    
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
 
 .pagination li:hover {
     cursor: pointer;
@@ -111,4 +111,16 @@ table tbody tr {
 
 .search input[type=text] {
     border: 1px solid #ccc;
+}
+.row {
+    text-align: left;
+}
+.t-cover-img {
+    position: absolute;
+    left: 500px;
+    width: 300px;
+    padding: 10px;
+}
+.buttonback{
+    text-align: justify;
 }

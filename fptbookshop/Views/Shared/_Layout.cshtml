@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/fptbookshop.styles.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
@@ -57,13 +58,13 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted text-center">
-    <div class="container">
-        Copyright  &copy; Book Store @DateTime.Now.Year
-        @*<a href="mailto:nitish.webgentle@gmail.com">nitish.webgentle@gmail.com</a>
-        *@
-        @*<cutom-email my-email="nitish@webgentle.com"></cutom-email>*@
-    </div>
+    <footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: light;">
+    © Copyright @DateTime.Now.Year
+    <a class="text-dark" href="https://github.com/tuanle273">tuanle273</a>
+  </div>
+  <!-- Copyright -->
 </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

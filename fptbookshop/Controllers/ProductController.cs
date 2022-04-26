@@ -52,6 +52,7 @@ namespace fptbookshop.Controllers
 
             return View(product);
         }
+        
 
         // GET: Product/Create
         [Authorize(Roles = "Seller")]

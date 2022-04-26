@@ -10,7 +10,7 @@
         <span class="text-muted">@(Model.Price.ToString("n0"))VND</span>  
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <a asp-route="bookDetailsRoute" asp-route-id="@Model.ProductId"
+                <a asp-action="Details" asp-route-id="@Model.ProductId"
                    class="btn btn-sm btn-outline-secondary">View details</a>
                    <a asp-route="bookDetailsRoute" asp-route-id="@Model.ProductId"
                    class="btn btn-sm btn-outline-secondary">Add To Cart </a>
