@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace fptbookshop.Models
@@ -15,5 +17,7 @@ namespace fptbookshop.Models
        
         public string Description { set; get; }
         public decimal Price { set; get; }
+       
+
     }
 }

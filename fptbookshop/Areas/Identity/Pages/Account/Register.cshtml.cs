@@ -22,6 +22,7 @@ using Microsoft.Extensions.Logging;
 
 namespace fptbookshop.Areas.Identity.Pages.Account
 {
+    
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -30,6 +31,7 @@ namespace fptbookshop.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+
         public List<SelectListItem> Roles { get; } = new List<SelectListItem>
       {
           new SelectListItem { Value = "Customer", Text = "Customer" },
@@ -106,6 +108,7 @@ namespace fptbookshop.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             [Required]
             [Display(Name = "Your Role")]
+
             public string Role { get; set; }
 
         }

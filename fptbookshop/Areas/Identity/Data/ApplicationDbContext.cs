@@ -58,6 +58,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
         );
 
     }
+    
 }
 public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
 {

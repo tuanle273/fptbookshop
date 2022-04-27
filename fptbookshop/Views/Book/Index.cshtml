@@ -1,0 +1,75 @@
+﻿@using static fptbookshop.Controllers.BookController
+
+@model PaginatedList<fptbookshop.Models.Product>
+<div>
+    
+    <h3 class="display-5">All books</h3>
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+ 
+<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+    <div class="container">
+		
+				
+    <form asp-controller="Book" asp-action="Index" method="get">
+    
+        <input type="text" class="form-control" placeholder="Search By Name!" name="SearchString" />
+        <button type="submit" class="btn btn-light" value="Filter" ><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+        <button class="btn btn-danger" asp-action="Index"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</button>
+</form>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a  asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+@foreach (var item in from i in Model.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)
+    {
+
+        <div class="container-fluid">
+            <div class="row">
+
+                @foreach (var product in item)
+                {
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                         <div class="img-wrap">
+                        <img src="@product.Image" class="border border-3"  style="max-width: 100%;" />
+                        </div>
+            <div class="card-body">
+        
+        <h3 class="card-title">@(string.IsNullOrEmpty(product.Name) ? "Name is not available" : product.Name)</h3>
+        <p class="card-text">@(string.IsNullOrEmpty(product.Description) ? "Description is not availabe": product.Description)</p>
+        <span class="text-muted">@(product.Price.ToString("n0"))VND</span>  
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <a asp-action="Details" asp-route-id="@product.ProductId"
+                   class="btn btn-sm btn-outline-info">View details</a>
+                   <a asp-route="bookDetailsRoute" asp-route-id="@product.ProductId"
+                   class="btn btn-sm btn-outline-success">Add To Cart </a>
+            </div>
+              
+           
+        </div>
+    </div>
+                    </div>
+                }
+
+            </div> <!-- End row -->
+        </div><!-- End container -->
+    }
+</div>
+
+

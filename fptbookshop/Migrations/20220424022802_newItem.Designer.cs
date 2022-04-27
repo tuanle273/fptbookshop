@@ -12,8 +12,8 @@ using fptbookshop.Areas.Identity.Data;
 namespace fptbookshop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220422024733_add")]
-    partial class add
+    [Migration("20220424022802_newItem")]
+    partial class newItem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

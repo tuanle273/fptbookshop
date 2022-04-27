@@ -25,14 +25,19 @@ namespace fptbookshop.Controllers
         // GET: Product
 
         [Authorize(Roles = "Seller")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Products.ToListAsync());
+            var products = from m in _context.Products
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await products.ToListAsync());
         }
-        public async Task<IActionResult> BookShop()
-        {
-            return View(await _context.Products.ToListAsync()); 
-        }
+
 
         // GET: Product/Details/5
         [Authorize(Roles = "Seller")]

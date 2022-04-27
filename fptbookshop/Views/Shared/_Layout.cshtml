@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/fptbookshop.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/lumen.css"  />
 
 </head>
 <body>
@@ -25,18 +26,21 @@
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <ul class="navbar-nav">
+                    <div class="d-flex align-items-center">
+                    <!-- Icon -->
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
                     <partial name="_LoginPartial" />
+                    
                 </ul>
+
                  <ul class="navbar-nav flex-grow-1">
                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="BookShop">BookShop</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">BookShop</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cart">Cart</a>
-                        </li>                      
+                                             
                         
                         <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Seller</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="Index">Product Manage</a>
                             <div class="dropdown-divider"></div>
@@ -47,7 +51,9 @@
                     </li>
 
                     </ul>
+
                 </div>
+
               
             </div>
         </nav>
@@ -57,7 +63,7 @@
             @RenderBody()
         </main>
     </div>
-
+</body>
     <footer class="bg-light text-center text-lg-start">
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: light;">
@@ -70,5 +76,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+
 </html>

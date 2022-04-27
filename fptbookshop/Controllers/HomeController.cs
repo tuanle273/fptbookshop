@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using MimeKit.Text;
 using System.Diagnostics;
@@ -13,6 +14,7 @@ namespace fptbookshop.Controllers
 {
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
         private readonly IEmailSender _emailSender;
         private readonly UserManager<IdentityUser> _userManager;
@@ -24,11 +26,11 @@ namespace fptbookshop.Controllers
             _userManager = userManager;
 
         }
-       
-       
+     
+
         public IActionResult Index()
         {
-           
+          
             return View();
         }
 
@@ -44,13 +46,13 @@ namespace fptbookshop.Controllers
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("from_address@example.com"));
-            email.To.Add(MailboxAddress.Parse("tuanle273@gmail.com"));
-            email.Subject = "Test Email Subject";
-            email.Body = new TextPart(TextFormat.Plain) { Text = "Test send email" };
+            email.To.Add(MailboxAddress.Parse("tuanle2731@gmail.com"));
+            email.Subject = "Email Register Confirm";
+            email.Body = new TextPart(TextFormat.Plain) { Text = "Your Account Was Comfirm" };
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("tuanle273@gmail.com", "Anhtuan1");
+            smtp.Authenticate("tuanle2731@gmail.com", "Anhtuan1");
             smtp.Send(email);
             smtp.Disconnect(true);
 

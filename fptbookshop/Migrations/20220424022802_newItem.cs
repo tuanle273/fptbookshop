@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace fptbookshop.Migrations
 {
-    public partial class add : Migration
+    public partial class newItem : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

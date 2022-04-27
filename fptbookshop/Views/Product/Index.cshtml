@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<fptbookshop.Models.Product>
- <h3 class="display-5">Admin Zone </h3>
+ <h3 class="display-5">Seller Zone </h3>
 <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
  
 <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
@@ -8,9 +8,7 @@
     <a asp-action="Create" class="btn btn-primary">Create New Product</a>  
     
 </p>
-<div class="search">
-<input type="text" id="search" placeholder="Search something!" align="right">
-</div>
+
 <div class="container">
 		
 				<div class="form-group"> 	
@@ -28,7 +26,13 @@
 						</select>
 			 		
 			  	</div>
-
+<form asp-controller="Product" asp-action="Index" method="get">
+    <div class="search">
+        <input type="text" id="search" placeholder="Search By Name!" name="SearchString" align="right"/>
+        <button type="submit" class="btn btn-light" value="Filter" ><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+        <button class="btn btn-danger" asp-action="Index"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</button>
+    </div>
+</form>
    <table id="table-id" class="table table-bordered">
     <thead>
         <tr>
@@ -47,11 +51,11 @@
 				  <ul class="pagination">
             
             <li data-page="prev" >
-             <button> < <span class="sr-only">(current)</span></button>
+             <button class="btn  btn-sm"> < <span class="sr-only">(current)</span></button>
                  </li>
 				
                <li data-page="next" id="prev">
-               <button > > <span class="sr-only">(current)</span></button>
+               <button class="btn  btn-sm" > > <span class="sr-only">(current)</span></button>
 								    </li>
 				  </ul>
 				</nav>
